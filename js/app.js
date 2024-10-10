@@ -1,8 +1,13 @@
 function comprar() {
     let tipo = document.getElementById('tipo-ingresso');
-    let qtd  = parseInt(document.getElementById('qtd').value);
+    let qtd = parseInt(document.getElementById('qtd').value);
 
-    if(tipo.value == 'pista') {
+    if (isNaN(qtd) || qtd <= 0) {
+        alert('Quantidade inválida. Por favor, insira um número positivo.');
+        return;
+    }
+
+    if (tipo.value == 'pista') {
         comprarPista(qtd);
     } else if (tipo.value == 'superior') {
         comprarSuperior(qtd);
@@ -21,6 +26,7 @@ function comprarPista(qtd) {
         alert('Compra realizada com sucesso');
     }
 }
+
 function comprarSuperior(qtd) {
     let qtdSuperior = parseInt(document.getElementById('qtd-superior').textContent);
     if (qtd > qtdSuperior) {
@@ -31,6 +37,7 @@ function comprarSuperior(qtd) {
         alert('Compra realizada com sucesso');
     }
 }
+
 function comprarInferior(qtd) {
     let qtdInferior = parseInt(document.getElementById('qtd-inferior').textContent);
     if (qtd > qtdInferior) {
@@ -41,4 +48,3 @@ function comprarInferior(qtd) {
         alert('Compra realizada com sucesso');
     }
 }
-
